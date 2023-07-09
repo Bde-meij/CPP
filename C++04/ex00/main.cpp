@@ -13,8 +13,8 @@ int main()
 	cat->makeSound();
 	wrongcat->makeSound();
 
-	delete meta;
-	delete dog;
 	delete cat;
+	delete dog;
+	delete meta;
 	delete wrongcat;
 }

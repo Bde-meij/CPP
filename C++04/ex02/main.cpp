@@ -4,9 +4,15 @@
 int main()
 {
 	int i = 0;
-	// AAnimal ani;
-	AAnimal *ani = new Cat();
-	ani->makeSound();
+
+	// Cat mauw;
+	// mauw.makeSound();
+	// AAnimal ani(mauw);
+	// AAnimal annnie;
+
+	// AAnimal *ani = new Cat();
+	// ani->makeSound();
+	// delete ani;
 
 	Cat *cats[10];
 	Dog *dogs[10];

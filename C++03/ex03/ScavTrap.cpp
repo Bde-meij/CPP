@@ -2,6 +2,7 @@
 
 ScavTrap::ScavTrap()
 {
+	ClapTrap::energyPoints = 50;
 	std::cout << "Scav Default Constructor called" << std::endl;
 }
 

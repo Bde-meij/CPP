@@ -7,16 +7,23 @@ Dog::Dog()
 	std::cout << GREEN << "Dog defCon" << WHITE << std::endl;
 }
 
-Dog::Dog(const Animal &dog)
+Dog::Dog(const Dog &dog)
 {
 	std::cout << GREEN << "Dog copCon" << WHITE << std::endl;
 	*this = dog;
 }
 
-Dog &Dog::operator=(const Animal &dog)
+Brain *Dog::getBrain() const
+{
+	return (this->brain);
+}
+
+Dog &Dog::operator=(const Dog &dog)
 {
 	std::cout << YELLOW << "Dog assOp" << WHITE << std::endl;
+	this->brain = new Brain;
 	this->type = dog.getType();
+    *this->brain = *dog.getBrain();
 	return (*this);
 }
 

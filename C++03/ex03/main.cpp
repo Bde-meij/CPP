@@ -4,6 +4,7 @@ void energyCheck()
 {
 	int i = 0;
 	DiamondTrap diam("matt_damond");
+	diam.takeDamage(99);
 	std::cout << "expected 50 actions " << std::endl;
 	while (i < 200)
 	{

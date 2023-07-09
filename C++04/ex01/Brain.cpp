@@ -3,6 +3,12 @@
 Brain::Brain()
 {
 	std::cout << GREEN << "Brain defCon" << WHITE << std::endl;
+	int i = 0;
+	while (i < 100)
+	{
+		this->ideas[i] = "idea";
+		i++;
+	}
 }
 
 Brain::Brain(const Brain &brain)
@@ -21,6 +27,21 @@ Brain &Brain::operator=(const Brain &brain)
 		i++;
 	}
 	return (*this);
+}
+
+std::string *Brain::getIdeas()
+{
+	return (this->ideas);
+}
+
+void Brain::setIdeas(std::string newIdeas)
+{
+	int i = 0;
+	while (i < 100)
+	{
+		this->ideas[i] = newIdeas;
+		i++;
+	}
 }
 
 Brain::~Brain()

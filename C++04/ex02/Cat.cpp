@@ -13,10 +13,17 @@ Cat::Cat(const Cat &cat)
 	*this = cat;
 }
 
+Brain *Cat::getBrain() const
+{
+	return (this->brain);
+}
+
 Cat &Cat::operator=(const Cat &cat)
 {
 	std::cout << YELLOW << "Cat assOp" << WHITE << std::endl;
+	this->brain = new Brain;
 	this->type = cat.getType();
+	*this->brain = *cat.getBrain();
 	return (*this);
 }
 

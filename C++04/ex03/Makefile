@@ -1,6 +1,6 @@
 NAME = Materia
 CC	= c++
-SRC = main.cpp
+SRC = main.cpp Character.cpp
 
 OBJFILES = $(SRC:%.cpp=%.o)
 CFLAGS = -Wall -Wextra -Werror -std=c++98

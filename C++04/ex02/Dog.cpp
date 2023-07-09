@@ -13,10 +13,17 @@ Dog::Dog(const Dog &dog)
 	*this = dog;
 }
 
+Brain *Dog::getBrain() const
+{
+	return (this->brain);
+}
+
 Dog &Dog::operator=(const Dog &dog)
 {
 	std::cout << YELLOW << "Dog assOp" << WHITE << std::endl;
+	this->brain = new Brain;
 	this->type = dog.getType();
+    *this->brain = *dog.getBrain();
 	return (*this);
 }
 

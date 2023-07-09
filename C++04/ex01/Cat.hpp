@@ -8,10 +8,11 @@ class Cat : public Animal
 {
 	public:
 	Cat();
-	Cat(const Animal &cat);
-	Cat &operator=(const Animal &cat);
+	Cat(const Cat &cat);
+	Cat &operator=(const Cat &cat);
 	~Cat();
 
+	Brain *getBrain() const;
 	void makeSound() const;
 
 	private:

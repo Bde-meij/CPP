@@ -2,6 +2,8 @@
 
 FragTrap::FragTrap()
 {
+	ClapTrap::hitPoints = 100;
+	ClapTrap::attackDamage = 30;
 	std::cout << "Default Frag Constructed" << std::endl;
 }
 

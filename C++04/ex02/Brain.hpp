@@ -11,9 +11,9 @@ class Brain
 		Brain &operator=(const Brain &brain);
 		~Brain();
 		std::string ideas[100];
+		std::string* getIdeas();
+		void setIdeas(std::string ideas);
 };
 
 
 #endif
-
-// const, houdt dignen constant, mogelijk beter met compilen en behoedt programmeurs

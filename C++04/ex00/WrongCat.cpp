@@ -21,7 +21,7 @@ WrongCat &WrongCat::operator=(const WrongAnimal &WrongCat)
 
 WrongCat::~WrongCat()
 {
-	std::cout << YELLOW << "destroyed WrongCat" << WHITE <<  std::endl;
+	std::cout << RED << "destroyed WrongCat" << WHITE << std::endl;
 }
 
 void WrongCat::makeSound() const

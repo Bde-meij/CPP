@@ -7,16 +7,23 @@ Cat::Cat()
 	std::cout << GREEN << "Cat defCon" << WHITE << std::endl;
 }
 
-Cat::Cat(const Animal &cat)
+Cat::Cat(const Cat &cat)
 {
 	std::cout << GREEN << "Cat copCon" << WHITE << std::endl;
 	*this = cat;
 }
 
-Cat &Cat::operator=(const Animal &cat)
+Brain *Cat::getBrain() const
+{
+	return (this->brain);
+}
+
+Cat &Cat::operator=(const Cat &cat)
 {
 	std::cout << YELLOW << "Cat assOp" << WHITE << std::endl;
+	this->brain = new Brain;
 	this->type = cat.getType();
+	*this->brain = *cat.getBrain();
 	return (*this);
 }
 
