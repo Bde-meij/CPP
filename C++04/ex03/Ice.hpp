@@ -1,15 +1,19 @@
-#pragma once
+#ifndef ICE
+#define ICE
 
 #include "AMateria.hpp"
 
 class Ice: public AMateria
 {
 	public:
-		Ice();
-		Ice(const Ice &ice);
-		Ice(std::string const & type);
-		Ice &operator=(const Ice &material);
-		~Ice();
+	Ice();
+	Ice(const Ice &ice);
+	Ice(std::string const & type);
+	Ice &operator=(const Ice &material);
+	~Ice();
 
-		virtual AMateria *clone() const;
+	AMateria *clone() const;
+	void use(ICharacter &target);
 };
+
+#endif

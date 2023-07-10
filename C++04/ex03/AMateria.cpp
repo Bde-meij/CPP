@@ -2,38 +2,44 @@
 
 AMateria::AMateria()
 {
-	std::cout << "defCon AMateria" << std::endl;
+	
+	// std::cout << "defCon AMateria" << std::endl;
+}
+
+AMateria::AMateria(const AMateria &materia)
+{
+	*this = materia;
 }
 
 AMateria::AMateria(std::string const & type)
 {
-	std::cout << "copCon AMateria" << std::endl;
+	// std::cout << "copCon AMateria" << std::endl;
 	this->type = type;
 }
 
 AMateria &AMateria::operator=(const AMateria &material)
 {
-	std::cout << "assign AMateria" << std::endl;
-	this->type = material.type;
+	// std::cout << "assign AMateria" << std::endl;
+	this->type = material.getType();
 	return (*this);
 }
 
 AMateria::~AMateria()
 {
-	std::cout << "destruct AMateria" << std::endl;
+	// std::cout << "destruct AMateria" << std::endl;
 }
 
-std::string const &AMateria::getType() const
+const std::string &AMateria::getType() const
 {
 	return (this->type);
 }
 
-// AMateria *AMateria::clone() const = 0
+// AMateria *AMateria::clone() const
 // {
-// 	return (new AMateria(this->type));
+// 	return (NULL);
 // }
 
-// virtual void use(ICharacter &target)
-// {
-// 	std::cout << "defCon AMateria" < std::endl;
-// }
+void AMateria::use(ICharacter &target)
+{
+	(void) target;
+}

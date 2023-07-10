@@ -1,24 +1,26 @@
-#include "Character"
+#include "Character.hpp"
 
 Character::Character()
 {
-	// std::cout << "Char con" << std::endl;
+	// std::cout << "Char defCon" << std::endl;
 	this->name = "noname";
-	while (i < 4)
+	int idx = 0;
+	while (idx < 4)
 	{
-		this->materias[i] = NULL;
-		i++;
+		this->materias[idx] = 0;
+		idx++;
 	}
 }
 
 Character::Character(std::string name)
 {
-	// std::cout << "Char con" << std::endl;
+	// std::cout << "Char nameCon" << std::endl;
 	this->name = name;
-	while (i < 4)
+	int idx = 0;
+	while (idx < 4)
 	{
-		this->materias[i] = NULL;
-		i++;
+		this->materias[idx] = 0;
+		idx++;
 	}
 }
 
@@ -31,13 +33,15 @@ Character::Character(const Character &character)
 Character &Character::operator=(const Character &character)
 {
 	// std::cout << "Char assign" << std::endl;
+	if (this == &character)
+		return (*this);
 	this->name = character.getName();
 	int idx = 0;
-	while (i < 4)
+	while (idx < 4)
 	{
-		this->materias[idx] = NULL;
-		if (character.getMateria(idx) != NULL)
-			this->materias[idx] = character.getMateria(i);
+		this->materias[idx] = 0;
+		if (character.materias[idx]->clone() != 0)
+			this->materias[idx] = character.materias[idx]->clone();
 		idx++;
 	}
 	return (*this);
@@ -54,41 +58,27 @@ std::string const &Character::getName() const
 	return (this->name);
 }
 
-AMateria Character::getMateria(int idx)
-{
-	if ((0 <= idx) && (idx < 4))
-		return (this->materias[idx]);
-	return (NULL);
-}
-
 void Character::equip(AMateria* m)
 {
 	// std::cout << "Char equip" << std::endl;
 	int idx = 0;
-	while (this.getMateria(idx) != NULL)
+	while (this->materias[idx] != 0)
 		idx++;
 	if (idx < 4)
-		this.materias[idx] = m;
+		this->materias[idx] = m;
 }
 
 void Character::unequip(int idx)
 {
 	// std::cout << "Char unequip" << std::endl;
-	if (idx < 4)
-		this->materias[idx] = NULL;
+	if ((idx > -1) && (idx < 4))
+		this->materias[idx] = 0;
 }
 
-void Character::use(int idx, Character& target)
+void Character::use(int idx, ICharacter& target)
 {
-	std::cout
-	<< this->name
-	<< " uses ";
-	if (this->materias[idx])
-		std::cout << this->materias[idx];
-	else
-		std::cout << "nothing";
-	std::cout 
-	<< " on "
-	<< target.getName()
-	<< std::endl;
+	if (((idx < 0) && (idx > 4)) || \
+	(this->materias[idx] == 0))
+		return ;
+	this->materias[idx]->use(target);
 }
