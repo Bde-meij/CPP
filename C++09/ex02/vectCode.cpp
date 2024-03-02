@@ -72,7 +72,7 @@ void PmergeMe::vectorInsertLast(std::vector<int> lowVec)
 std::vector<int>::iterator PmergeMe::vectorBinSearch(std::vector<int>::iterator first, \
 std::vector<int>::iterator last, int value)
 {
-    std::vector<int>::iterator it;
+	std::vector<int>::iterator it;
     int count = std::distance(first, last);
 	int step = 0;
  

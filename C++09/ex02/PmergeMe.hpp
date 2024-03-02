@@ -13,38 +13,36 @@
 class PmergeMe
 {
 	public:
+	// PmergeMe.cpp
 	PmergeMe();
 	PmergeMe(int ac, char **av);
 	PmergeMe(const PmergeMe &other);
 	PmergeMe &operator=(const PmergeMe &other);
 	~PmergeMe();
 
-	//	PmergeMe.cpp
 	void makePairs(std::vector<int> intVec, size_t i);
-	size_t jacob(size_t x);
-	void showPairs();
-
-	// rsm.cpp
 	void recursiveSortForMerge(std::vector <std::pair<int, int>> &_pairVec, int n);
 	void merge(std::vector <std::pair<int, int>> &_pairVec, std::vector <std::pair<int, int>> leftVec,\
 	std::vector <std::pair<int, int>> rightVec, int leftLen, int rightLen);
+	size_t jacob(size_t x);
+	void showPairs();
 
-	// vCode.hpp
+	// vectCode.hpp
 	void vectorStart(std::vector<int> intVec, int i);
 	void vectorInsertion(std::vector<int> lowVec, std::vector<int> highVec);
 	void vectorBetweenJacobs(std::vector<int> lowVec, std::vector<int> highVec, int a, int b);
 	void vectorInsertLast(std::vector<int> lowVec);
+	std::vector<int>::iterator vectorBinSearch(std::vector<int>::iterator first, \
+	std::vector<int>::iterator last, int value);
 
-	// lCode.hpp
+	// listCode.hpp
 	void listStart(std::vector<int> intVec, int i);
 	void listInsertion(std::list<int> lowList, std::list<int> highList);
 	void listBetweenJacobs(std::list<int> lowList, std::list<int> highList, int a, int b);
 	void listInsertLast(std::list<int> lowList);
-
-	std::vector<int>::iterator vectorBinSearch(std::vector<int>::iterator first, \
-	std::vector<int>::iterator last, int value);
 	std::list<int>::iterator listBinSearch(std::list<int>::iterator first, \
 	std::list<int>::iterator last, int value);
+
 
 	private:
 	int _comparisons;

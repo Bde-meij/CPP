@@ -1,6 +1,6 @@
 NAME = PmergeMe
 CC	= c++
-SRC = main.cpp PmergeMe.cpp vCode.cpp lCode.cpp rsm.cpp
+SRC = main.cpp PmergeMe.cpp vectCode.cpp listCode.cpp
 HDRS = PmergeMe.hpp
 
 OBJFILES = $(SRC:%.cpp=%.o)

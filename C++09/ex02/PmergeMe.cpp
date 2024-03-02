@@ -41,13 +41,70 @@ PmergeMe::PmergeMe(int ac, char **av) : _comparisons(0), _recSortN(0)
 		std::cout << vi << " ";
 	std::cout << std::endl;
 	if (i <= 56)
-		std::cout << "comparisons allowed = " << compArr[i-1] << std::endl;
+		std::cout << "max comparisons allowed = " << compArr[i-1] << std::endl;
 	makePairs(intVec, i);
 	
 	// showPairs();
 	vectorStart(intVec, i);
 	listStart(intVec, i);
 	// showPairs();
+}
+
+void PmergeMe::recursiveSortForMerge(std::vector <std::pair<int, int>> &_pairVec, int n)
+{
+	if (n < 2)
+		return ;
+
+	int leftLen = n/2;
+	int rightLen = n - leftLen;
+	std::vector <std::pair<int, int>> leftVec;
+	std::vector <std::pair<int, int>> rightVec;
+
+	for (int i = 0; i < leftLen; i++)
+		leftVec.push_back(_pairVec[i]);
+	for (int i = 0; i < rightLen; i++)
+		rightVec.push_back(_pairVec[leftLen+i]);
+
+	recursiveSortForMerge(leftVec, leftLen);
+	recursiveSortForMerge(rightVec, rightLen);
+	merge(_pairVec, leftVec, rightVec, leftLen, rightLen);
+}
+
+void PmergeMe::merge(std::vector <std::pair<int, int>> &_pairVec, std::vector <std::pair<int, int>> leftVec, \
+std::vector <std::pair<int, int>> rightVec, \
+int leftLen, int rightLen)
+{
+	int i = 0;
+	int j = 0;
+	int k = 0;
+
+	while (i < leftLen && j < rightLen)
+	{
+		if (leftVec[i].second < rightVec[j].second)
+		{
+			_pairVec[k] = leftVec[i];
+			i++;
+		}
+		else
+		{
+			_pairVec[k] = rightVec[j];
+			j++;
+		}
+		k++;
+		_recSortN++;
+	}
+	while (i < leftLen)
+	{
+		_pairVec[k] = leftVec[i];
+		i++;
+		k++;
+	}
+	while (j < rightLen)
+	{
+		_pairVec[k] = rightVec[j];
+		j++;
+		k++;
+	}
 }
 
 void PmergeMe::makePairs(std::vector<int> intVec, size_t i)
@@ -72,6 +129,11 @@ void PmergeMe::makePairs(std::vector<int> intVec, size_t i)
 	}
 }
 
+size_t PmergeMe::jacob(size_t x)
+{
+	return ((pow(2, x) - pow(-1, x)) / 3);
+}
+
 void PmergeMe::showPairs()
 {
 	std::cout << "\nvectorPairs:\n";
@@ -81,9 +143,3 @@ void PmergeMe::showPairs()
 	for (auto &pl : _pairList)
 		std::cout << pl.first << " " << pl.second << std::endl;
 }
-
-size_t PmergeMe::jacob(size_t x)
-{
-	return ((pow(2, x) - pow(-1, x)) / 3);
-}
-

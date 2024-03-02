@@ -32,6 +32,7 @@ void PmergeMe::listStart(std::vector<int> intVec, int i)
 	<< " with n comparisons: " << _comparisons + _recSortN << std::endl;
 }
 
+
 void PmergeMe::listInsertion(std::list<int> lowList, std::list<int> highList)
 {
 	_finalList = highList;
@@ -82,7 +83,7 @@ void PmergeMe::listInsertLast(std::list<int> lowList)
 std::list<int>::iterator PmergeMe::listBinSearch(std::list<int>::iterator first, \
 std::list<int>::iterator last, int value)
 {
-    std::list<int>::iterator it;
+	std::list<int>::iterator it;
     int count = std::distance(first, last);
 	int step = 0;
  
